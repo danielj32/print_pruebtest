@@ -8,18 +8,17 @@
 #include <stdarg.h>
 
 /**
- * struct hee - printf
- *@c: pointer
- *@sp: pointer to struct
+ * struct print_name - printf
+ *@c: st
+ *@sp: pointer to the function
  */
-typedef struct hee
+
+typedef struct print_name
 {
-	char *c;
-	char *(*sp)(va_list, char *);
+	char *st;
+	void (*pt)(va_list);
 
-} hee;
-
-int _printf(const char *format, ...);
+} print;
 
 
 
@@ -31,10 +30,14 @@ int _printf(const char *format, ...);
 int _atoi(char *s);
 
 
+void _printf(const char * const format, ...);
 
+void integer(va_list i);
 
+void caracter(va_list i);
 
-void _printf(const char *format, ...);
+void flotante(va_list i);
 
+void string(va_list i);
 
 #endif

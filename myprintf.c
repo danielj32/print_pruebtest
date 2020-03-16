@@ -1,56 +1,79 @@
 #include "holberton.h"
 
-void _printf(const char *format, ...)
+void _printf(const char * const format, ...)
 {
-	va_list print;
-	int count = 0;
+	int l, k;
+	va_list lista;
+	char *com = "";
+	print print_name[] =
 
-	MyPrint prints[] = {
-		{"c", print_character},
-		{"s", print_string},
-		{"d", print_integer},
-		{"i", print_integer},
-		{"b", print_binary},
-		{"u", print_unsigned_decimal},
-		{"o", print_octal},
-		{"x", print_hex},
-		{"X", print_HEX},
-		{"S", print_SString},
-		{"p", print_address},
-		{"r", print_reverse},
-		{"R", print_rot13},
+	{
+		{"c", caracter},
+		{"i", integer},
+		{"f", flotante},
+		{"s", string},
 		{NULL, NULL}
 	};
 
-	struct fsdsdsd flag[] = {
-
-		{"+", f_plus},
-		{" ", f_space},
-		{NULL, NULL}
-	};
-
-	if (!format)
-		return (-1);
-	va_start(print, format);
-
-	va_end(print);
-	return (0);
+	va_start(lista, format);
+	l = 0;
+	while (format && format[l])
+	{
+		k = 0;
+		while (print_name[k].pt)
+		{
+			if (*(print_name[k].st) == format[l])
+			{
+				printf("%s", com);
+				(*print_name[k].pt)(lista);
+				com = ", ";
+			}
+			k++;
+		}
+		l++;
+	}
+	printf("\n");
+	va_end(lista);
 }
-
 /**
- *caracter - search char
+ *integer - search int
  *@lista: list
  */
-
-void  print_character(va_list lista)
-{
-	char j = va_arg(arg, int);
-
-	printf("%c", va_arg(lista, int));
-}
 
 void integer(va_list lista)
 {
 	printf("%d", va_arg(lista, int));
 }
+/**
+ *caracter - search char
+ *@lista: list
+ */
 
+void caracter(va_list lista)
+{
+	printf("%c", va_arg(lista, int));
+}
+/**
+ *flotante - search float
+ *@lista: list
+ */
+
+void flotante(va_list lista)
+{
+	printf("%f", va_arg(lista, double));
+}
+/**
+ *string - search string
+ *@lista: list
+ */
+
+void string(va_list lista)
+{
+	char *point;
+
+	point =  va_arg(lista, char *);
+	if (!point)
+		point = "(nil)";
+
+	printf("%s", point);
+}
