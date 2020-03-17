@@ -79,6 +79,3 @@ char *conv(unsigned int number, int bas)
 	
 	return (pointer); 
 }
-
-
-
