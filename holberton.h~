@@ -1,0 +1,40 @@
+#ifndef HOLBERTON_H
+#define HOLBERTON_H
+
+#include <limits.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
+
+/**
+ * struct hee - printf
+ *@c: pointer
+ *@sp: pointer to struct
+ */
+typedef struct hee
+{
+	char *c;
+	char *(*sp)(va_list, char *);
+
+} hee;
+
+int _printf(const char *format, ...);
+
+
+
+/* Functions  Specifiers*/
+
+/* Flags handlers */
+
+/* Aux Functions */
+int _atoi(char *s);
+
+
+
+
+
+int _printf(const char *format, ...);
+
+
+#endif

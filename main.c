@@ -8,6 +8,6 @@
 
 int main(void)
 {
-	_printf("%s", "lberton");
+	_printf("%d", 12);
 	return (0);
 }
